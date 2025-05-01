@@ -1,23 +1,12 @@
 import './styles.css';
-import {loadHome} from './home.js';
-import {loadMenu} from './menu.js';
-import { loadAdopt } from './adopt.js';
-import { loadContact } from './contact.js';
+import { getWeather, currentLocationWeather } from './loader';
 
-loadHome();
-
-document.getElementById('Menu').addEventListener('click',()=>{
-    loadMenu();
+document.addEventListener('DOMContentLoaded',()=>{
+    currentLocationWeather()
 })
 
-document.getElementById('Adopt').addEventListener('click',()=>{
-    loadAdopt();
-})
-
-document.getElementById('Contact').addEventListener('click',()=>{
-    loadContact();
-})
-
-document.getElementById('Home').addEventListener('click',()=>{
-    loadHome();
+document.querySelector('.searchButton').addEventListener('click',()=>{
+    const city = document.getElementById('searchArea').value
+    getWeather(undefined,undefined,city)
+    document.querySelector('#searchArea').value=''
 })
